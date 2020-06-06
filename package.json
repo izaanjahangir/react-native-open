@@ -1,0 +1,24 @@
+{
+  "name": "react-native-open",
+  "version": "0.0.1",
+  "description": "Simple React Native package to open external apps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react-native",
+    "deep-linking",
+    "react-native-deep-linking",
+    "package",
+    "react-native-package",
+    "android",
+    "ios",
+    "mobile",
+    "hybrid",
+    "native",
+    "react"
+  ],
+  "author": "izaan jahangir",
+  "license": "MIT"
+}
