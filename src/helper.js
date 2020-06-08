@@ -58,6 +58,27 @@ export async function openInstagram(rawUrl) {
   }
 }
 
-function extractUsernameFromSocialLink(url) {
+export async function openYoutubeChannel(rawUrl) {
+  try {
+    const channel = extractChannelIdFromYoutubeLink(rawUrl);
+
+    const url =
+      Platform.OS === "ios" ? `youtube://${rawUrl}` : `youtube://${rawUrl}`;
+
+    const supported = await Linking.canOpenURL(url);
+
+    if (!supported) throw new Error("Youtube is not available");
+
+    return Linking.openURL(url);
+  } catch (e) {
+    throw e;
+  }
+}
+
+function extractChannelIdFromYoutubeLink(url = "") {
+  return url.split("channel/")[1];
+}
+
+function extractUsernameFromSocialLink(url = "") {
   return url.split("com/")[1];
 }
