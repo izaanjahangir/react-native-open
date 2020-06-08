@@ -38,3 +38,26 @@ export async function openTwitter(rawUrl = "") {
     throw e;
   }
 }
+
+export async function openInstagram(rawUrl) {
+  try {
+    const username = extractUsernameFromSocialLink(rawUrl);
+
+    const url =
+      Platform.OS === "ios"
+        ? `instagram://user?username=${username}`
+        : `instagram://user?username=${username}`;
+
+    const supported = await Linking.canOpenURL(url);
+
+    if (!supported) throw new Error("Instagram is not available");
+
+    return Linking.openURL(url);
+  } catch (e) {
+    throw e;
+  }
+}
+
+function extractUsernameFromSocialLink(url) {
+  return url.split("com/")[1];
+}
